@@ -11,6 +11,6 @@ response = requests.post(url,params=params)
 
 print(response.status_code)   # prints the HTTP status code
 
-#save file
+
 with open("path/to/your/downlaod/file/nameofile", "wb") as f:
     f.write(response.content)
