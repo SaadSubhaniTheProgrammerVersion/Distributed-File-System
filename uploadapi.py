@@ -1,14 +1,14 @@
 import requests
 
-url = "http://localhost:5000/upload"
+url = "http://ashshare.pythonanywhere.com/upload"
 
 params = {
     "token": "shahkhalid",
-    "filepath": r"C:\Users\huzai\Pictures\Files\Lecture-1.pdf"
+    "filepath": r"C:\Users\huzai\Documents\GitHub\Distributed-File-System\hello.txt"
 }
 
 files = {
-    "file": open(r"C:\Users\huzai\Pictures\Files\Lecture-1.pdf", "rb")
+    "file": open(r"C:\Users\huzai\Documents\GitHub\Distributed-File-System\hello.txt", "rb")
 }
 
 

@@ -1,10 +1,10 @@
 import requests
 
-url = "http://localhost:5000/search"
+url = "http://ashshare.pythonanywhere.com/search"
 
 params = {
     "token": "shahkhalid",
-    "query": "Isb"
+    "query": "hello"
 }
 
 response = requests.post(url,params=params)

@@ -44,6 +44,7 @@ def download():
         if token==apitoken:
             filepath=os.path.join(STORAGE_DIRECTORY, filepath)
             if os.path.isfile(filepath):
+                filename=os.path.splitext(os.path.basename(filepath))[0]
                 return send_file(filepath, as_attachment=True)
             else:
                 return "File not found!"
@@ -102,4 +103,5 @@ def search():
     except:
         return "Error!"
 
-app.run()
+if __name__ == "__main__":
+    app.run()

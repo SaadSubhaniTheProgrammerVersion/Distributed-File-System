@@ -1,16 +1,16 @@
 import requests
 
-url = "http://localhost:5000/download"
+url = "http://ashshare.pythonanywhere.com/download"
 
 params = {
     "token": "shahkhalid",
-    "filepath": r"path/to/your/upload/file"
+    "filepath": r"hello.txt"
 }
 
 response = requests.post(url,params=params)
 
 print(response.status_code)   # prints the HTTP status code
+print(response.text)     
 
-
-with open("path/to/your/downlaod/file/nameofile", "wb") as f:
-    f.write(response.content)
+# with open("helo.txt", "wb") as f:
+#     f.write(response.content)

@@ -1,6 +1,6 @@
 import requests
 
-url = "http://localhost:5000/listAllFiles"
+url = "http://ashshare.pythonanywhere.com/listAllFiles"
 
 params = {
     "token": "shahkhalid",
