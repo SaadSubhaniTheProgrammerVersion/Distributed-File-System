@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Sharing Page</title>
+    <style>
+        body {
+            /* background-image: url("/static/assets/2947575.jpg"); */
+            background-size: cover;
+            background: linear-gradient(to bottom, #ffffff,#b9c8e9);
+            background-repeat: no-repeat;
+            background-position: center center;
+            font-family: Arial, sans-serif;
+            color: black;
+            /* background-color: black; */
+        }
+        .back-button {
+            background-color: #5aa0e6;
+            color: #fff;
+            padding: 2px;
+            width: 70px;
+            height: 28px;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin: -25px;
+        }
+
+        .back-button:hover {
+            background-color: #5aa0e6;
+        }
+
+        .back-button-icon {
+            margin-right: 5px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #5aa0e6;
+        }
+
+        tr:nth-child(even) {
+            background-color: #b9c8e9;
+        }
+
+        .file-upload {
+            margin-top: 20px;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-upload label {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            background-color: #5aa0e6;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .file-upload label:hover {
+            background-color: #5aa0e6;
+        }
+
+        .file-upload .upload-button {
+            display: none;
+        }
+
+        .file-upload .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #5aa0e6;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .download-button:hover {
+            background-color: #1a73f8;
+        }
+        .upload-button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .upload-button {
+            padding: 10px 20px;
+            background-color: rgb(88, 157, 246);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .upload-button:hover {
+            background-color: #333;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SHA Share</h1>
+        <div class="container">
+            <!-- ... (existing content) ... -->
+    
+            <div class="back-button-container">
+                <a href="{{url_for('Index')}}" class="back-button">
+                    <span class="back-button-icon">&larr;</span> Back
+                </a>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file_name in file_names %}
+                <tr>
+                    <td>{{ file_name.name }}</td>
+                    <td>
+
+                        <a href="/download/{{ file_name.path }}" class="download-button">Download</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="container">
+            <!-- ... (existing content) ... -->
+    
+           <form action = "http://localhost:5000/upload" method = "POST" enctype = "multipart/form-data">
+                <label for="image-input" class="custom-file-upload">
+                    <input type="file" name = "file" id="image-input">
+                   
+                </label>            
+                  <button type="submit" style="margin-top:30px; border:none;  font-size: 15px; font-family:Montserrat; font-weight:bold; background: #00B2EC; height: 40px; width: 150px; border-radius: 15px;">Submit</button>
+            </form>
+    
+    </div>
+
+    <script>
+        const fileUpload = document.getElementById('file-upload');
+        const fileName = document.querySelector('.file-name');
+
+        fileUpload.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            fileName.textContent = file ? file.name : '';
+        });
+ 
+        /* ... (existing JavaScript code) ... */
+
+        // Add event listener for the "Upload Your Files" button
+        const uploadButton = document.querySelector('.upload-button');
+        uploadButton.addEventListener('click', function (e) {
+            // Implement your file upload logic here
+        });
+
+        function handleUpload() {
+            var fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = '.pdf,.doc,.docx,.txt'; // Specify the file extensions allowed
+
+            fileInput.onchange = function(e) {
+                var file = e.target.files[0];
+                if (file) {
+                    var fileName = file.name;
+                    console.log('File uploaded:', fileName);
+                    // Perform additional actions with the uploaded file name
+                }
+            };
+
+            fileInput.click();
+        }
+    </script>
+    </script>
+</body>
+</html>
