@@ -1,0 +1,237 @@
+body {
+    font-family: 'Montserrat';
+}
+
+
+@media screen and (min-width: 1024px) {
+    .logincontainer {
+        position: relative;
+        top: 150px;
+        left: 550px;
+        border: 5px solid black;
+        border-radius: 45px;
+        max-width: 270px;
+        min-height: 320px;
+        background-color: #EC576B;
+    }
+
+    .textinput {
+        height: 10px;
+        width: 80%;
+        padding: 15px;
+        margin-top: 5px;
+        border-radius: 45px;
+        border: 2px solid black;
+        background: white;
+    }
+
+    .textinput {
+            background-color: white;
+            outline: none;
+        }
+
+
+    .btnlogin {
+        color: black;
+        width: 92%;
+        padding: 12px;
+        margin-left: 0px;
+        margin-top: 20px;
+        border-radius: 45px;
+        border: 2px solid black;
+        font-size: 15px;
+        font-family: 'Script MT';
+        background-color: #E5E338;
+    }
+
+        .btnlogin:hover {
+            opacity: 1;
+        }
+
+    .btnsignup {
+        color: black;
+        width: 92%;
+        padding: 12px;
+        margin-left: 0px;
+        margin-top: 5px;
+        border-radius: 45px;
+        border: 2px solid black;
+        font-size: 15px;
+        font-family: 'Script MT';
+        background-color: #4EC5C1;
+    }
+
+        .btnsignup:hover {
+            opacity: 1;
+        }
+
+    .login {
+        font-family: 'Script MT';
+        text-align: center;
+    }
+}
+
+
+@media screen and (min-width: 480px) and (max-width:1023px) {
+    .logincontainer {
+        position: relative;
+        top: 150px;
+        left: 270px;
+        border: 5px solid black;
+        border-radius: 45px;
+        max-width: 270px;
+        min-height: 320px;
+        background-color: #EC576B;
+    }
+
+    input[type="text"],
+    input[type="password"], input[type="email"], input[type="number"] {
+        height: 10px;
+        width: 80%;
+        padding: 15px;
+        margin-top: 5px;
+        border-radius: 45px;
+        border: 2px solid black;
+        background: white;
+    }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            background-color: white;
+            outline: none;
+        }
+
+
+    .btnlogin {
+        color: black;
+        width: 92%;
+        padding: 12px;
+        margin-left: 0px;
+        margin-top: 20px;
+        border-radius: 45px;
+        border: 2px solid black;
+        font-size: 15px;
+        font-family: 'Script MT';
+        background-color: #E5E338;
+    }
+
+        .btnlogin:hover {
+            opacity: 1;
+        }
+
+    .btnsignup {
+        color: black;
+        width: 92%;
+        padding: 12px;
+        margin-left: 0px;
+        margin-top: 5px;
+        border-radius: 45px;
+        border: 2px solid black;
+        font-size: 15px;
+        font-family: 'Script MT';
+        background-color: #4EC5C1;
+    }
+
+        .btnsignup:hover {
+            opacity: 1;
+        }
+
+    .login {
+        font-family: 'Script MT';
+        text-align: center;
+    }
+}
+
+
+@media screen and (min-width: 320px) and (max-width:480px) {
+    .logincontainer {
+        position: relative;
+        top: 150px;
+        left:40px;
+        border: 5px solid black;
+        border-radius: 45px;
+        max-width: 270px;
+        min-height: 320px;
+        background-color: #EC576B;
+    }
+
+    input[type="text"],
+    input[type="password"], input[type="email"], input[type="number"] {
+        height: 10px;
+        width: 80%;
+        padding: 15px;
+        margin-top: 5px;
+        border-radius: 45px;
+        border: 2px solid black;
+        background: white;
+    }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            background-color: white;
+            outline: none;
+        }
+
+
+    .btnlogin {
+        color: black;
+        width: 92%;
+        padding: 12px;
+        margin-left: 0px;
+        margin-top: 20px;
+        border-radius: 45px;
+        border: 2px solid black;
+        font-size: 15px;
+        font-family: 'Script MT';
+        background-color: #E5E338;
+    }
+
+        .btnlogin:hover {
+            opacity: 1;
+        }
+
+    .btnsignup {
+        color: black;
+        width: 92%;
+        padding: 12px;
+        margin-left: 0px;
+        margin-top: 5px;
+        border-radius: 45px;
+        border: 2px solid black;
+        font-size: 15px;
+        font-family: 'Script MT';
+        background-color: #4EC5C1;
+    }
+
+        .btnsignup:hover {
+            opacity: 1;
+        }
+
+    .login {
+        font-family: 'Script MT';
+        text-align: center;
+    }
+}
+
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #0b0b45;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: white; /* color of the scroll thumb */
+    border-radius: 20px;
+    border: 3px solid #0b0b45;
+}
+
+form {
+    align-content: center;
+    place-content: center;
+    place-items: center;
+    place-self: center;
+    text-align: center;
+}

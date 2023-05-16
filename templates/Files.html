@@ -21,7 +21,9 @@
             <thead>
                 <tr>
                     <th>File</th>
+                    <th>Author</th>
                     <th>Size</th>
+                    <th>Time</th>
                     <th><i class="fa fa-eye"></i>&nbsp;View</th>
                     <th><i class="fa fa-download"></i>&nbsp;Download</th>
                     <th><i class="fa fa-trash-o"></i>&nbsp;Delete</th>
@@ -31,7 +33,9 @@
                 {% for file_name in file_names %}
                 <tr>
                     <td>{{ file_name.name }}</td>
+                    <td>{{ file_name.author }}</td>
                     <td>{{ file_name.size }}</td>
+                    <td>{{ file_name.time }}</td>
                     <td>
                         <a href="/View/{{ file_name.path }}" style="color: black;" class="download-button"><i class="fa fa-eye"></i>&nbsp;View</a>
                     </td>
@@ -39,7 +43,7 @@
                         <a href="/Download/{{ file_name.path }}" class="download-button"><i class="fa fa-download"></i>&nbsp;Download</a>
                     </td>
                     <td>
-                        <a href="/Delete/{{ file_name.path }}" style="color: red;" class="download-button"><i class="fa fa-trash-o"></i>&nbsp;<b>Delete</b></a>
+                        <a href="/Delete/{{ file_name.name }}" style="color: red;" class="download-button"><i class="fa fa-trash-o"></i>&nbsp;<b>Delete</b></a>
                     </td>
                 </tr>
                 {% endfor %}

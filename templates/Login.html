@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="icon" href="https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/fa314a/external-login-ui-and-ux-xnimrodx-lineal-xnimrodx.png">
+    <link rel="stylesheet" href="/static/css/login.css">
+    <title>Login | SHAShare</title>
+</head>
+
+<body>
+
+    <div class="logincontainer" style="vertical-align: central">
+        <form action = "http://localhost:5000/Authenticate" method = "POST" enctype = "multipart/form-data">
+            <h1 class="login">Login</h1>
+
+            <input type="text" class="textinput"  id="username" name="username" required>
+            <br>    
+            <input type="password" class="textinput" id="password" name="password" required>
+            <a href="/User/ForgetPassword" style="text-align: end; top: 183px; left: 20px; font-size: 12px; position: absolute; ">Forget Password?</a>
+
+            <button type="submit" class="btnlogin">Login</button>
+            <a href="/User/Signup">
+                <button type="button" class="btnsignup">Signup</button>
+            </a>
+        </form>    
+
+    </div>
+</body>
+</html>
