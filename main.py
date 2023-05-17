@@ -53,12 +53,13 @@ def Authenticate():
         else:
             session['logined']="False"
             return redirect(url_for('Login'))
-    elif session['lastpage']=="Signup":
-        if username!="" and password!="" and (username not in users ):
-            users.update({username:password})
-            return redirect(url_for('Login'))
+    elif session['lastpage'] == "Signup":
+        if username != "" and password != "" and (username not in users):
+            users.update({username: password})
+            success_message = "User successfully added!"
+            return render_template('Success.html', message=success_message)
         else:
-            session['logined']="False"
+            session['logined'] = "False"
             return redirect(url_for('Signup'))
 
 
