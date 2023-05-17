@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Success</title>
+    <style>
+         .toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            border-radius: 5px;
+            z-index: 1;
+            display: none;
+        }
+
+        .show-toast {
+            display: block;
+            animation: fadein 0s, fadeout 0s 1s;
+        }
+
+        @keyframes fadein {
+            from {top: 0; opacity: 0;}
+            to {top: 50%; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {top: 50%; opacity: 1;}
+            to {top: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    <div class="toast" id="toast">
+        User added successfully!
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var toast = document.getElementById("toast");
+            toast.classList.add("show-toast");
+            
+            setTimeout(function() {
+                toast.classList.remove("show-toast");
+                window.location.href = "{{ url_for('Login') }}";
+            }, 1000);  // Redirect after 1.5 seconds
+        });
+    </script>
+</body>
+</html>

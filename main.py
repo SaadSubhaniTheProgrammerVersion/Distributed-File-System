@@ -8,12 +8,14 @@ import time
 app = Flask(__name__)
 
 
-STORAGE_DIRECTORY=r'C:\Users\huzai\Documents\GitHub\Distributed-File-System\static\files'
+STORAGE_DIRECTORY=r'static\files'
 app.secret_key = 'shahkhalid'
 APITOKEN="shahkhalid"
 
 users={
     "shahkhalid":"shahkhalid",
+    "huzaifa":"huzaifa",
+    "saad":"saad",
 }
 
 
@@ -51,14 +53,13 @@ def Authenticate():
         else:
             session['logined']="False"
             return redirect(url_for('Login'))
-    elif session['lastpage']=="Signup":
-        if username!="" and password!="" and (username not in users ):
-            users.update({username:password})
-            session['username'] = username
-            session['logined']="True"
-            return redirect(url_for('Files'))
+    elif session['lastpage'] == "Signup":
+        if username != "" and password != "" and (username not in users):
+            users.update({username: password})
+            success_message = "User successfully added!"
+            return render_template('Success.html', message=success_message)
         else:
-            session['logined']="False"
+            session['logined'] = "False"
             return redirect(url_for('Signup'))
 
 
