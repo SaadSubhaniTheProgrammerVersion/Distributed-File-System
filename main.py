@@ -11,8 +11,11 @@ app = Flask(__name__)
 STORAGE_DIRECTORY=r'C:\Users\huzai\Documents\GitHub\Distributed-File-System\static\files'
 app.secret_key = 'shahkhalid'
 APITOKEN="shahkhalid"
-USERNAME="shahkhalid"
-PASSWORD="shahkhalid"
+
+users={
+    "shahkhalid":"shahkhalid",
+}
+
 
 
 @app.route("/")
@@ -22,20 +25,42 @@ def Index():
 @app.route("/Login")
 def Login():
     session['logined']="False"
+    session['lastpage']="Login"
     return render_template("Login.html")
+
+
+@app.route("/Signup")
+def Signup():
+    session['logined']="False"
+    session['lastpage']="Signup"
+    return render_template("Signup.html")
+
+
+
 
 @app.route("/Authenticate", methods=['POST'])
 def Authenticate():
     username = request.form.get('username')
     password = request.form.get('password')
 
-    if username==USERNAME and password==PASSWORD:
-        session['username'] = username
-        session['logined']="True"
-        return redirect(url_for('Files'))
-    else:
-        session['logined']="False"
-        return redirect(url_for('Login'))
+    if session['lastpage']=="Login":
+        if username in users and password == users[username]:
+            session['username'] = username
+            session['logined']="True"
+            return redirect(url_for('Files'))
+        else:
+            session['logined']="False"
+            return redirect(url_for('Login'))
+    elif session['lastpage']=="Signup":
+        if username!="" and password!="" and (username not in users ):
+            users.update({username:password})
+            session['username'] = username
+            session['logined']="True"
+            return redirect(url_for('Files'))
+        else:
+            session['logined']="False"
+            return redirect(url_for('Signup'))
+
 
 
 @app.route("/Files")
