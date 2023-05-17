@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="icon" href="https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/fa314a/external-login-ui-and-ux-xnimrodx-lineal-xnimrodx.png">
-    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="/static/css/signup.css">
     <title>Login | SHAShare</title>
 </head>
 
@@ -15,7 +15,7 @@
     <div class="wrapper fadeInDown">
         <div id="formContent">
           <!-- Tabs Titles -->
-          <h2 class="active"> Sign In </h2>
+          <h2 class="active">Sign Up </h2>
       
           
           <!-- Login Form -->
@@ -23,16 +23,13 @@
             <input type="text" class="fadeIn second"  placeholder="username" id="username" name="username" required>
             <input type="password"  class="fadeIn third" placeholder="password" id="password" name="password" required>
 
-            <button type="submit" style="width:380px;" class="fadeIn fourth">Login</button>
+            <button type="submit" style="width:380px;" class="fadeIn fourth">Signup</button>
           
 
           </form>
-          <a href="{{url_for('Signup')}}"> <button  type="submit" style="width:380px; position: relative; top:-30px" class="fadeIn fourth">Signup</button></a>
+          <a href="{{url_for('Login')}}"> <button  type="submit" style="width:380px; position: relative; top:-30px" class="fadeIn fourth">Login</button></a>
       
           <!-- Remind Passowrd -->
-          <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
-          </div>
       
         </div>
       </div>
