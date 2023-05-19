@@ -3,12 +3,12 @@ import requests
 url = "http://ashshare.pythonanywhere.com/upload"
 
 params = {
-    "token": "shahkhalid",
-    "filepath": r"C:\Users\saads\Downloads\PE Presentation.pdf"
+    "token": "APITOKENHERE",
+    "filepath": r"FILEPATHHERE"
 }
 
 files = {
-    "file": open(r"C:\Users\saads\Downloads\PE Presentation.pdf", "rb")
+    "file": open(r"FILEPATHHERE", "rb")
 }
 
 

@@ -86,7 +86,7 @@ def Files():
                 'path': file.get('path'),
                 'time':file.get('time'),
                 'author':file.get('author'),
-                'size': str(round(os.path.getsize(os.path.join('mysite/static/files', file.get('name')))/ (1024 * 1024),1))+" MB" ,
+                'size': str(round(os.path.getsize(os.path.join('static/files', file.get('name')))/ (1024 * 1024),1))+" MB" ,
             }
             file_names.append(file_info)
 

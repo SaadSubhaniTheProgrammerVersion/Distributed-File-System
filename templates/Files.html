@@ -3,27 +3,36 @@
 <head>
     <title>Files | SHAShare</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="static\assets\icon.png"/>
     <link href="/static/css/files.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
-        <h1>SHAShare</h1>
+        <h1 class="mainheading">SHAShare</h1>
         <div class="container">
             <!-- ... (existing content) ... -->
-    
-            <div class="back-button-container">
+
+            <!-- <div class="back-button-container">
                 <a href="{{url_for('Index')}}" class="back-button">
                     <span class="back-button-icon">&larr;</span> Back
                 </a>
             </div>
-        </div>
+        </div> -->
+    <div class="center">
+        <form action = "http://localhost:5000/Upload" method = "POST" enctype = "multipart/form-data">
+            <label for="image-input" >
+                <input type="file" name = "file" id="image-input" class="custom-file-upload">
+            </label>
+              <button type="submit" class="btn2">Submit</button>
+        </form>
+    </div>
         <table>
             <thead>
                 <tr>
                     <th>File</th>
                     <th>Author</th>
                     <th>Size</th>
-                    <th>Time</th>
+                    <th>Date</th>
                     <th><i class="fa fa-eye"></i>&nbsp;View</th>
                     <th><i class="fa fa-download"></i>&nbsp;Download</th>
                     <th><i class="fa fa-trash-o"></i>&nbsp;Delete</th>
@@ -37,10 +46,10 @@
                     <td>{{ file_name.size }}</td>
                     <td>{{ file_name.time }}</td>
                     <td>
-                        <a href="/View/{{ file_name.path }}" style="color: black;" class="download-button"><i class="fa fa-eye"></i>&nbsp;View</a>
+                        <a href="/View/{{ file_name.name }}" style="color: black;" class="download-button"><i class="fa fa-eye"></i>&nbsp;View</a>
                     </td>
                     <td>
-                        <a href="/Download/{{ file_name.path }}" class="download-button"><i class="fa fa-download"></i>&nbsp;Download</a>
+                        <a href="/Download/{{ file_name.name }}" class="download-button"><i class="fa fa-download"></i>&nbsp;Download</a>
                     </td>
                     <td>
                         <a href="/Delete/{{ file_name.name }}" style="color: red;" class="download-button"><i class="fa fa-trash-o"></i>&nbsp;<b>Delete</b></a>
@@ -51,16 +60,25 @@
         </table>
         <div class="container">
             <!-- ... (existing content) ... -->
-    
-           <form action = "http://localhost:5000/Upload" method = "POST" enctype = "multipart/form-data">
-                <label for="image-input" class="custom-file-upload">
-                    <input type="file" name = "file" id="image-input">
-                   
-                </label>            
-                  <button type="submit" style="margin-top:30px; border:none;  font-size: 15px; font-family:Montserrat; font-weight:bold; background: #00B2EC; height: 40px; width: 150px; border-radius: 15px;">Submit</button>
-            </form>
-    
+
+
+
+   <div class="center">
+        <a href="{{url_for('Login')}}" class="btn1">
+            Logout
+        </a>
     </div>
+
+
+    <div style="margin-top:220px">
+    </div>
+
+    <footer>
+        <div class="footer-content center sizer">
+          <p>&copy; 2023 @SHA Share. All rights reserved.</p>
+          <p>Developed by Saad Huzaifa and Ali</p>
+        </div>
+      </footer>
 
     <script>
         const fileUpload = document.getElementById('file-upload');
@@ -70,7 +88,7 @@
             const file = e.target.files[0];
             fileName.textContent = file ? file.name : '';
         });
- 
+
         /* ... (existing JavaScript code) ... */
 
         // Add event listener for the "Upload Your Files" button
@@ -95,7 +113,6 @@
 
             fileInput.click();
         }
-    </script>
     </script>
 </body>
 </html>

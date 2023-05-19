@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
 body {
     /* background-image: url("/static/assets/2947575.jpg"); */
     background-size: cover;
@@ -118,3 +119,90 @@ tr:nth-child(even) {
 .upload-button:hover {
     background-color: #333;
 }
+.mainheading{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+}
+.btn1 {
+    -webkit-border-radius: 15;
+    -moz-border-radius: 15;
+    border-radius: 15px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 18px;
+    background: red;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    text-align: center;
+ 
+  }
+  
+  .btn1:hover {
+    background: #f24646;
+    background-image: -webkit-linear-gradient(top, #f24646, #fa5252);
+    background-image: -moz-linear-gradient(top, #f24646, #fa5252);
+    background-image: -ms-linear-gradient(top, #f24646, #fa5252);
+    background-image: -o-linear-gradient(top, #f24646, #fa5252);
+    background-image: linear-gradient(to bottom, #f24646, #fa5252);
+    text-decoration: none;
+  }
+.center{
+    text-align: center;
+}
+
+.btn2 {
+    -webkit-border-radius: 15;
+    -moz-border-radius: 15;
+    border-radius: 15px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 17px;
+    background: #578bf2;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border: none;
+  }
+  
+  .btn2:hover {
+    background: #48aaf0;
+    background-image: -webkit-linear-gradient(top, #48aaf0, #65afeb);
+    background-image: -moz-linear-gradient(top, #48aaf0, #65afeb);
+    background-image: -ms-linear-gradient(top, #48aaf0, #65afeb);
+    background-image: -o-linear-gradient(top, #48aaf0, #65afeb);
+    background-image: linear-gradient(to bottom, #48aaf0, #65afeb);
+    text-decoration: none;
+  }
+
+  .custom-file-upload {
+    -webkit-border-radius: 15;
+    -moz-border-radius: 15;
+    border-radius: 15px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 12px;
+    background: #578bf2;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border: none;
+    margin-right:25px ;
+    margin-left:25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+  
+  .custom-file-upload:hover {
+    background: #48aaf0;
+    background-image: -webkit-linear-gradient(top, #48aaf0, #65afeb);
+    background-image: -moz-linear-gradient(top, #48aaf0, #65afeb);
+    background-image: -ms-linear-gradient(top, #48aaf0, #65afeb);
+    background-image: -o-linear-gradient(top, #48aaf0, #65afeb);
+    background-image: linear-gradient(to bottom, #48aaf0, #65afeb);
+    text-decoration: none;
+  }
+
+  .sizer{
+    font-size: small;
+    margin-bottom: -80px;
+  }

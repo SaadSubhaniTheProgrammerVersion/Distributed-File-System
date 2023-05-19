@@ -3,8 +3,8 @@ import requests
 url = "http://ashshare.pythonanywhere.com/search"
 
 params = {
-    "token": "shahkhalid",
-    "query": "Presentation"
+    "token": "APITOKENHERE",
+    "query": "QUERYHERE"
 }
 
 response = requests.post(url,params=params)
