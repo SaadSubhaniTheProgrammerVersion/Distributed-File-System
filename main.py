@@ -4,25 +4,27 @@ from werkzeug.datastructures import  FileStorage
 import os
 import Database
 import time
+from datetime import datetime
 
 app = Flask(__name__)
 
 
 STORAGE_DIRECTORY=r'static\files'
-app.secret_key = 'shahkhalid'
-APITOKEN="shahkhalid"
+app.secret_key = 'distributedcomputingproject'
+APITOKEN="distributedcomputingproject"
 
 users={
-    "shahkhalid":"shahkhalid",
     "huzaifa":"huzaifa",
     "saad":"saad",
 }
 
 
+GLOBAL_FILE_DATA=[]
 
 @app.route("/")
 def Index():
-    return render_template("Index.html")
+    session['lastpage']=""
+    return render_template("index.html")
 
 @app.route("/Login")
 def Login():
@@ -36,6 +38,12 @@ def Signup():
     session['logined']="False"
     session['lastpage']="Signup"
     return render_template("Signup.html")
+
+
+@app.route("/Forgot")
+def Forgot():
+    return render_template("Forgot.html")
+
 
 
 
@@ -69,6 +77,7 @@ def Files():
     if session['logined']=="True":
         file_names = []
 
+        #files=GLOBAL_FILE_DATA
         files=Database.readFiles()
 
         for file in files:
@@ -77,29 +86,34 @@ def Files():
                 'path': file.get('path'),
                 'time':file.get('time'),
                 'author':file.get('author'),
-                'size': str(round(os.path.getsize(file.get('path'))/ (1024 * 1024),1))+" MB" ,
+                'size': str(round(os.path.getsize(os.path.join('mysite/static/files', file.get('name')))/ (1024 * 1024),1))+" MB" ,
             }
             file_names.append(file_info)
 
+
+        session['lastpage']="Files"
         return render_template('Files.html', file_names=file_names)
     else:
         return redirect(url_for('Login'))
 
-@app.route('/View/<path:file_path>')
-def View(file_path):
+@app.route('/View/<path:file_name>')
+def View(file_name):
     if session['logined']=="True":
-        if os.path.exists(file_path):
-            return send_file(file_path)
+        if os.path.exists(os.path.join(STORAGE_DIRECTORY, file_name)):
+            return send_file(os.path.join('static/files', file_name))
         else:
             return redirect(url_for('Files'))
     else:
         return redirect(url_for('Login'))
 
 
-@app.route('/Download/<path:file_path>')
-def Download(file_path):
+@app.route('/Download/<path:file_name>')
+def Download(file_name):
     if session['logined']=="True":
-        return send_file(file_path, as_attachment=True)
+        if os.path.exists(os.path.join(STORAGE_DIRECTORY, file_name)):
+            return send_file(os.path.join('static/files', file_name), as_attachment=True)
+        else:
+            return redirect(url_for('Files'))
     else:
         return redirect(url_for('Login'))
 
@@ -107,8 +121,20 @@ def Download(file_path):
 def Delete(file_name):
     if session['logined']=="True":
         if os.path.exists(os.path.join(STORAGE_DIRECTORY, file_name)):
-            os.remove(os.path.join(STORAGE_DIRECTORY, file_name))
+
             Database.deleteFile(file_name)
+            os.remove(os.path.join(STORAGE_DIRECTORY, file_name))
+
+            if len(GLOBAL_FILE_DATA)>0:
+                i=0
+                for file in GLOBAL_FILE_DATA:
+                    if file.get('name')==file_name:
+                        break
+                    i=i+1
+
+
+                GLOBAL_FILE_DATA.remove(GLOBAL_FILE_DATA[i])
+
             return redirect(url_for('Files'))
         else:
             return redirect(url_for('Files'))
@@ -120,10 +146,23 @@ def Upload():
     if session['logined']=="True":
         if request.method == 'POST':
             f = request.files['file']
-            if f :
+
+
+            if f:
                 filename = secure_filename(f.filename)
+                Database.deleteFile(filename)
                 f.save(os.path.join(STORAGE_DIRECTORY, filename))
-                Database.addFile(filename,os.path.join(STORAGE_DIRECTORY, filename),session['username'])
+                Database.addFile(filename,os.path.join('static/files', filename),session['username'])
+                #Api.upload(APITOKEN,os.path.join(STORAGE_DIRECTORY, filename),filename,session['username'],str(datetime.now().date()))
+
+                filedata={
+                    "name":filename,
+                    "path":os.path.join('static/files', filename),
+                    "time":str(datetime.now().date()),
+                    "author":session['username'],
+                }
+
+                GLOBAL_FILE_DATA.append(filedata)
                 return redirect(url_for('Files'))
             else:
                 return redirect(url_for('Files'))
@@ -136,4 +175,5 @@ def Upload():
 if __name__ == "__main__":
     Database.createtable()
     app.run()
+    session['lastpage']="Files"
     session['logined']="False"
